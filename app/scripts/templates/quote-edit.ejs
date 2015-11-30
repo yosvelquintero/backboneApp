@@ -1,0 +1,64 @@
+<div class="jumbotron">
+    <h1>Quote edit</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="heading">Quote with ID: <%= quote.id %></h2>
+        <form class="form-horizontal edit-quote" method="post">
+            <fieldset>
+                <legend>Form:</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="value_date">Date:</label>
+                    <div class="col-md-4">
+                        <input type="text" id="value_date" class="form-control input-md" name="value_date" value="<%= quote.value_date %>" placeholder="Date" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}">
+                        <span class="help-block">Format: "30/11/2015"</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="market_direction">Market direction:</label>
+                    <div class="col-md-4">
+                        <select id="market_direction" name="market_direction" class="form-control" required>
+                            <option value="">Select</option>
+                            <option <%= quote.market_direction === 'buy' ? 'selected' : '' %> value="buy">Buy</option>
+                            <option <%= quote.market_direction === 'sell' ? 'selected' : '' %> value="sell">Sell</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="amount">Amount:</label>
+                    <div class="col-md-4">
+                        <input type="text" id="amount" class="form-control input-md" name="amount" value="<%= quote.amount %>" placeholder="Amount" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="currency">Currency:</label>
+                    <div class="col-md-4">
+                        <select id="currency" name="currency" class="form-control" required>
+                            <option value="">Select</option>
+                            <option <%= quote.currency === 'EUR' ? 'selected' : '' %> value="EUR">EUR</option>
+                            <option <%= quote.currency === 'USD' ? 'selected' : '' %> value="USD">USD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="counter_currency">Counter currency:</label>
+                    <div class="col-md-4">
+                        <select id="counter_currency" name="counter_currency" class="form-control" required>
+                            <option value="">Select</option>
+                            <option <%= quote.counterCurrency === 'EUR' ? 'selected' : '' %> value="EUR">EUR</option>
+                            <option <%= quote.counterCurrency === 'USD' ? 'selected' : '' %> value="USD">USD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">&nbsp;</div>
+                    <div class="col-md-8">
+                        <button class="btn btn-success update">Update</button>
+                        <button class="btn btn-sencondary cancel">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

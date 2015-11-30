@@ -4,7 +4,7 @@ This project is build on top of: Backbone.js generator https://github.com/yeoman
 
 ## Usage
 
-Install: `npm install -g generator-backbone`
+Install: `npm install && bower install`
 
 ## Generators
 
