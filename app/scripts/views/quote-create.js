@@ -5,8 +5,7 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'collections/quote'
-], function ($, _, Backbone, JST, QuoteCollection) {
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var QuoteCreateView = Backbone.View.extend({
@@ -40,11 +39,6 @@ define([
                     }
                 });
             });
-        },
-
-        initialize: function () {
-            this.collection = new QuoteCollection();
-            this.collection.fetch();
         },
 
         render: function () {

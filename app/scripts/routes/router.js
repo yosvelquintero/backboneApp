@@ -3,6 +3,7 @@
 define([
     'jquery',
     'backbone',
+    'collections/quote',
     'views/header',
     'views/footer',
     'views/home',
@@ -12,7 +13,7 @@ define([
     'views/quote-edit',
     'views/quote-delete',
     'views/contact'
-], function ($, Backbone, HeaderView, FooterView, HomeView, AboutView, QuoteView, QuoteCreateView, QuoteEditView, QuoteDeleteView, ContactView) {
+], function ($, Backbone, QuoteCollection, HeaderView, FooterView, HomeView, AboutView, QuoteView, QuoteCreateView, QuoteEditView, QuoteDeleteView, ContactView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -42,19 +43,48 @@ define([
             this.aboutView.render();
         },
         quoteView: function () {
-            this.quoteView = new QuoteView();
+            var collection = new QuoteCollection();
+            collection.fetch();
+
+            this.quoteView = new QuoteView({
+                collection: collection
+            });
             this.quoteView.render();
         },
         quoteCreateView: function () {
-            this.quoteCreateView = new QuoteCreateView();
+            this.quoteCreateView = new QuoteCreateView({
+                collection: new QuoteCollection()
+            });
             this.quoteCreateView.render();
         },
         quoteEditView: function (id) {
-            this.quoteEditView = new QuoteEditView(id);
-            this.quoteEditView.render(id);
+            var collection = new QuoteCollection();
+            collection.fetch();
+            var model = collection.get(id);
+
+            if (!model) {
+                return collection.redirectToQuotes();
+            }
+
+            this.quoteEditView = new QuoteEditView({
+                model: model,
+                collection: collection
+            });
+            this.quoteEditView.render();
         },
         quoteDeleteView: function (id) {
-            this.quoteDeleteView = new QuoteDeleteView(id);
+            var collection = new QuoteCollection();
+            collection.fetch();
+            var model = collection.get(id);
+
+            if (!model) {
+                return collection.redirectToQuotes();
+            }
+
+            this.quoteDeleteView = new QuoteDeleteView({
+                model: model,
+                collection: collection
+            });
             this.quoteDeleteView.render(id);
         },
         contactView: function () {

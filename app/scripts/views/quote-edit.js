@@ -4,9 +4,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates',
-    'collections/quote'
-], function ($, _, Backbone, JST, QuoteCollection) {
+    'templates'
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var QuoteEditView = Backbone.View.extend({
@@ -15,11 +14,6 @@ define([
         events: {
             'click button.cancel': 'cancelEditQuote',
             'submit .edit-quote': 'editQuote'
-        },
-
-        initialize: function () {
-            this.collection = new QuoteCollection();
-            this.collection.fetch();
         },
 
         cancelEditQuote: function (e) {
@@ -39,10 +33,10 @@ define([
             $target.find('button.update').text('Updating...');
 
             ajaxCall.always(function (jqXHR) {
-                self.quote.set(jqXHR.response);
-                self.quote.save(null, {
+                self.model.set(jqXHR.response);
+                self.model.save(null, {
                     success: function () {
-                        self.collection.set(self.quote);
+                        self.collection.set(self.model);
                         self.collection.redirectToQuotes();
                     }
                 });
@@ -50,14 +44,9 @@ define([
             });
         },
 
-        render: function (id) {
-            this.quote = this.collection.get(id);
-            if (!this.quote) {
-                return this.collection.redirectToQuotes();
-            }
-
+        render: function () {
             $('#content').html(this.$el.html(this.template({
-                'quote': this.quote.toJSON()
+                'quote': this.model.toJSON()
             })));
         }
     });

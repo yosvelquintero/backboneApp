@@ -4,18 +4,12 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates',
-    'collections/quote'
-], function ($, _, Backbone, JST, QuoteCollection) {
+    'templates'
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var QuoteView = Backbone.View.extend({
         template: JST['app/scripts/templates/quote.ejs'],
-
-        initialize: function () {
-            this.collection = new QuoteCollection();
-            this.collection.fetch();
-        },
 
         render: function () {
             $('#content').html(this.$el.html(this.template({
