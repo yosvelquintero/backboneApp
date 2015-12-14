@@ -34,6 +34,10 @@ define([
             this.footerView = new FooterView();
             this.footerView.render();
         },
+        start: function () {
+            // Bacbone history
+            Backbone.history.start();
+        },
         homeView: function () {
             this.homeView = new HomeView();
             this.homeView.render();

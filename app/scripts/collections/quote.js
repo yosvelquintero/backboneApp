@@ -18,7 +18,7 @@ define([
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('X-ACCESS-TOKEN', 's8Hzfu4Pyit76OfJWqDVsnRV');
                     },
-                    url: 'https://api-demo.kantox.com/api/companies/api_company_1/orders/quote.json',
+                    // url: 'https://api-demo.kantox.com/api/companies/api_company_1/orders/quote.json',
                     method: 'POST',
                     data: formData,
                     dataType : 'json',

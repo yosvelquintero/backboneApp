@@ -5,7 +5,8 @@ define([
     'underscore',
     'backbone',
     'templates',
-], function ($, _, Backbone, JST) {
+    'views/notification'
+], function ($, _, Backbone, JST, NotificationView) {
     'use strict';
 
     var QuoteCreateView = Backbone.View.extend({
@@ -38,6 +39,13 @@ define([
                         self.collection.redirectToQuotes();
                     }
                 });
+            });
+        },
+
+        initialize: function () {
+            this.collection.on('add', function () {
+                var notification = new NotificationView();
+                notification.render('Quote have been created');
             });
         },
 

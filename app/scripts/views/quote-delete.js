@@ -4,8 +4,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'views/notification'
+], function ($, _, Backbone, JST, NotificationView) {
     'use strict';
 
     var QuoteDeleteView = Backbone.View.extend({
@@ -28,6 +29,14 @@ define([
             this.model.destroy();
             this.collection.redirectToQuotes();
         },
+
+        initialize: function () {
+            this.model.on('remove', function () {
+                var notification = new NotificationView();
+                notification.render('Quote have been deleted');
+            });
+        },
+
 
         render: function () {
             $('#content').html(this.$el.html(this.template({

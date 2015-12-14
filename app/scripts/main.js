@@ -30,8 +30,6 @@ require([
     new Helper();
 
     // Router
-    new Router();
-
-    // Bacbone history
-    Backbone.history.start();
+    var router = new Router();
+    router.start();
 });

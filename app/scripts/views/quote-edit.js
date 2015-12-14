@@ -4,8 +4,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'views/notification'
+], function ($, _, Backbone, JST, NotificationView) {
     'use strict';
 
     var QuoteEditView = Backbone.View.extend({
@@ -41,6 +42,13 @@ define([
                     }
                 });
 
+            });
+        },
+
+        initialize: function () {
+            this.model.on('change', function () {
+                var notification = new NotificationView();
+                notification.render('Quote have been edited');
             });
         },
 
