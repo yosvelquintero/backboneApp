@@ -1,20 +1,20 @@
 /*global define*/
 
-define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
-    'use strict';
+define(["jquery", "underscore", "backbone", "templates"], function (
+  $,
+  _,
+  Backbone,
+  JST
+) {
+  "use strict";
 
-    var HeaderView = Backbone.View.extend({
-        template: JST['app/scripts/templates/header.ejs'],
+  const HeaderView = Backbone.View.extend({
+    template: JST["app/scripts/templates/header.ejs"],
 
-        render: function () {
-            $('#header').html(this.$el.html(this.template()));
-        }
-    });
+    render: function () {
+      $("#header").html(this.$el.html(this.template()));
+    },
+  });
 
-    return HeaderView;
+  return HeaderView;
 });

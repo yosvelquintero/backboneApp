@@ -1,6 +1,6 @@
 # backboneApp
 
-This project is build on top of: Backbone.js generator https://github.com/yeoman/generator-backbone
+This project is build on top of: Backbone.js generator [https://github.com/yeoman/generator-backbone](https://github.com/yeoman/generator-backbone)
 
 ## Usage
 
@@ -18,7 +18,7 @@ Available generators:
 
 ## Typical workflow
 
-```
+```sh
 yo backbone # generates your application base and build workflow
 yo backbone:model blog
 yo backbone:collection blog

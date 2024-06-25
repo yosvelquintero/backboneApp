@@ -1,65 +1,78 @@
 <div class="jumbotron">
-    <h1>Quotes</h1>
+  <h1>Quotes</h1>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <p class="pull-right">
-        <% if (!quotes.length) { %>
-        <% } %>
-        <a class="btn btn-primary btn-lg" href="/#quotes/create" role="button">Create quote</a>
-        </p>
-    </div>
+  <div class="col-sm-12">
+    <p class="pull-right">
+      <% if (!quotes.length) { %> <% } %>
+      <a class="btn btn-primary btn-lg" href="/#quotes/create" role="button"
+        >Create quote</a
+      >
+    </p>
+  </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <h2 class="heading">Quotes (<%=quotes.length %>)</h2>
-        <% if (!quotes.length) { %>
-        <p>You have no quote. <a href="/#quotes/create">Would you like to create a new Quote</a>?</p>
-        <% } %>
-        <% _.each(quotes, function(q){ %>
-        <div class="quote-details">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4 class="quote-id">Quote id: <%= q.id %></h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <dl>
-                        <dt>Status</dt>
-                        <dd><%= _.escape(q.status) %></dd>
-                        <dt>Market direction</dt>
-                        <dd><%= _.escape(q.marketDirection) %></dd>
-                        <dt>Counter value</dt>
-                        <dd><%= _.escape(q.counterValue) %></dd>
-                        <dt>Counter currency</dt>
-                        <dd><%= _.escape(q.counterCurrency) %></dd>
-                        <dt>Amount</dt>
-                        <dd><%= _.escape(q.amount) %></dd>
-                    </dl>
-                </div>
-                <div class="col-sm-4">
-                    <dl>
-                        <dt>Currency</dt>
-                        <dd><%= _.escape(q.currency) %></dd>
-                        <dt>Value date</dt>
-                        <dd><%= _.escape(q.valueDate) %></dd>
-                        <dt>Rate</dt>
-                        <dd><%= _.escape(q.rate) %></dd>
-                        <dt>Rate pair</dt>
-                        <dd><%= _.escape(q.ratePair) %></dd>
-                        <dt>Time stamp</dt>
-                        <dd><%= _.escape(q.timeStamp) %></dd>
-                    </dl>
-                </div>
-                <div class="col-sm-4">
-                    <div class="quote-buttons pull-right">
-                        <a class="btn btn-default" href="/#quotes/edit/<%= q.id %>" role="button">Edit</a>
-                        <a class="btn btn-danger delete" href="/#quotes/delete/<%= q.id %>" role="button">Delete</a>
-                    </div>
-                </div>
-            </div>
+  <div class="col-sm-12">
+    <h2 class="heading">Quotes (<%=quotes.length %>)</h2>
+    <% if (!quotes.length) { %>
+    <p>
+      You have no quote.
+      <a href="/#quotes/create">Would you like to create a new Quote</a>?
+    </p>
+    <% } %> <% _.each(quotes, function(q){ %>
+    <div class="quote-details">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="quote-id">Quote id: <%= q.id %></h4>
         </div>
-        <% }); %>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <dl>
+            <dt>Status</dt>
+            <dd><%= _.escape(q.status) %></dd>
+            <dt>Market direction</dt>
+            <dd><%= _.escape(q.marketDirection) %></dd>
+            <dt>Counter value</dt>
+            <dd><%= _.escape(q.counterValue) %></dd>
+            <dt>Counter currency</dt>
+            <dd><%= _.escape(q.counterCurrency) %></dd>
+            <dt>Amount</dt>
+            <dd><%= _.escape(q.amount) %></dd>
+          </dl>
+        </div>
+        <div class="col-sm-4">
+          <dl>
+            <dt>Currency</dt>
+            <dd><%= _.escape(q.currency) %></dd>
+            <dt>Value date</dt>
+            <dd><%= _.escape(q.valueDate) %></dd>
+            <dt>Rate</dt>
+            <dd><%= _.escape(q.rate) %></dd>
+            <dt>Rate pair</dt>
+            <dd><%= _.escape(q.ratePair) %></dd>
+            <dt>Time stamp</dt>
+            <dd><%= _.escape(q.timeStamp) %></dd>
+          </dl>
+        </div>
+        <div class="col-sm-4">
+          <div class="quote-buttons pull-right">
+            <a
+              class="btn btn-default"
+              href="/#quotes/edit/<%= q.id %>"
+              role="button"
+              >Edit</a
+            >
+            <a
+              class="btn btn-danger delete"
+              href="/#quotes/delete/<%= q.id %>"
+              role="button"
+              >Delete</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
+    <% }); %>
+  </div>
 </div>
