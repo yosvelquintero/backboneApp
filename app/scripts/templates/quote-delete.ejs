@@ -1,11 +1,25 @@
 <div class="jumbotron">
-    <h1>Quote delete</h1>
+  <h1>Quote delete</h1>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <% if (!quote.length) { %>
-        <h2 class="heading">Quote with ID: <%= quote.id %></h2>
-        <p>Confirm to delete? <a id="<%= quote.id %>" class="btn btn-primary confirm" href="/#quotes/confirm/<%= quote.id %>">Confirm</a> <a id="<%= quote.id %>" class="btn btn-default cancel" href="/#quotes/cancel/<%= quote.id %>">Cancel</a></p>
-        <% } %>
-    </div>
+  <div class="col-sm-12">
+    <% if (!quote.length) { %>
+    <h2 class="heading">Quote with ID: <%= quote.id %></h2>
+    <p>
+      Confirm to delete?
+      <a
+        id="<%= quote.id %>"
+        class="btn btn-primary confirm"
+        href="/#quotes/confirm/<%= quote.id %>"
+        >Confirm</a
+      >
+      <a
+        id="<%= quote.id %>"
+        class="btn btn-default cancel"
+        href="/#quotes/cancel/<%= quote.id %>"
+        >Cancel</a
+      >
+    </p>
+    <% } %>
+  </div>
 </div>
